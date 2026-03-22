@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registro de empleados</title>
+</head>
+
+<body>
+
+<h2>Registrar empleado</h2>
+
+<form action="empleados.php?accion=guardar" method="POST">
+
+Codigo:<br>
+<input type="text" name="codigo"><br><br>
+
+Nombre:<br>
+<input type="text" name="nombre"><br><br>
+
+Apellido:<br>
+<input type="text" name="apellido"><br><br>
+
+Telefono:<br>
+<input type="text" name="telefono"><br><br>
+
+Email:<br>
+<input type="text" name="email"><br><br>
+
+Fecha nacimiento:<br>
+<input type="date" name="fecha_nacimiento"><br><br>
+
+<input type="submit" value="Registrar">
+
+</form>
+
+<br>
+
+<a href="empleados.php?accion=listar">Ver empleados</a>
+
+</body>
+</html>
