@@ -96,7 +96,7 @@ function listar(){
 
     echo "</table>";
 
-    echo "<a href='index.html'>Nuevo empleado</a>";
+    echo "<a href='Frontend/index.html'>Nuevo empleado</a>";
 
 }
 
