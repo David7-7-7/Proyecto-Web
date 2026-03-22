@@ -17,7 +17,6 @@ class NominaCalculator
     const SENA                   = 0.02;     // 2%   
     const ICBF                   = 0.03;     // 3%    
     const CAJA_COMPENSACION      = 0.04;     // 4%   
-
     //Niveles ARL (riesgos: oficina,procesos manofactureros,etc)
     const ARL_NIVELES = [
         1 => 0.00522,
