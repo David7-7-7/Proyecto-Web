@@ -10,7 +10,6 @@ class NominaCalculator
     //Deducciones empleado
     const SALUD_EMPLEADO         = 0.04;     
     const PENSION_EMPLEADO       = 0.04;      
-
     //Aportes empleador
     const SALUD_EMPLEADOR        = 0.085;    // 8.5%  
     const PENSION_EMPLEADOR      = 0.12;     // 12%   
