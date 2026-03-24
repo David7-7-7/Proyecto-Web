@@ -1,20 +1,20 @@
-/* Reset básico */
+/* Reinicio básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Fondo general */
+/* Fondo */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #4facfe, #00f2fe);
 }
 
-/* Contenedor principal */
+/* Contenedor */
 .container {
-    width: 400px;
-    margin: 60px auto;
+    width: 420px;
+    margin: 50px auto;
     background: #ffffff;
     padding: 25px;
     border-radius: 12px;
@@ -44,8 +44,8 @@ label {
     color: #444;
 }
 
-/* Inputs */
-input {
+/* Inputs y SELECT (nuevo) */
+input, select {
     width: 100%;
     padding: 9px;
     margin-top: 5px;
@@ -54,8 +54,8 @@ input {
     transition: 0.3s;
 }
 
-/* Efecto focus */
-input:focus {
+/* Focus */
+input:focus, select:focus {
     border-color: #4facfe;
     outline: none;
     box-shadow: 0px 0px 5px rgba(79, 172, 254, 0.5);
