@@ -4,8 +4,103 @@
     <meta charset="UTF-8">
     <title>Registro de Empleados</title>
 
-    <!-- Conexión al CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
+
+    <script>
+        function validarFormulario() {
+            let f = document.forms["formEmpleado"];
+
+            let codigo = f["codigo"].value.trim();
+            let nombre = f["nombre"].value.trim();
+            let apellido = f["apellido"].value.trim();
+            let telefono = f["telefono"].value.trim();
+            let email = f["email"].value.trim();
+            let fecha = f["fecha_nacimiento"].value;
+
+            let cargo = f["cargo"].value;
+            let salario = f["salario"].value;
+            let dias = f["dias"].value;
+            let nocturnos = f["nocturnos"].value;
+            let arl = f["nivel_arl"].value;
+            let eps = f["eps"].value.trim();
+
+            // Código
+            if (!/^[0-9]+$/.test(codigo)) {
+                alert("El código debe contener solo números.");
+                return false;
+            }
+
+            // Nombre
+            if (nombre.length < 3) {
+                alert("El nombre debe tener al menos 3 caracteres.");
+                return false;
+            }
+
+            // Apellido
+            if (apellido.length < 3) {
+                alert("El apellido debe tener al menos 3 caracteres.");
+                return false;
+            }
+
+            // Teléfono
+            if (!/^[0-9]{7,}$/.test(telefono)) {
+                alert("El teléfono debe tener al menos 7 dígitos.");
+                return false;
+            }
+
+            // Email
+            let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regexEmail.test(email)) {
+                alert("Ingrese un correo válido.");
+                return false;
+            }
+
+            // Fecha
+            if (fecha === "") {
+                alert("Debe seleccionar una fecha de nacimiento.");
+                return false;
+            }
+
+            // Cargo
+            if (cargo === "") {
+                alert("Debe seleccionar un rol.");
+                return false;
+            }
+
+            // Salario
+            if (salario < 1750905) {
+                alert("El salario no puede ser menor al SMLV.");
+                return false;
+            }
+
+            // Días
+            if (dias < 1 || dias > 30) {
+                alert("Los días deben estar entre 1 y 30.");
+                return false;
+            }
+
+            // Nocturnos
+            if (nocturnos < 0 || nocturnos > dias) {
+                alert("Los días nocturnos no son válidos.");
+                return false;
+            }
+
+            // ARL
+            if (arl < 1 || arl > 5) {
+                alert("El nivel ARL debe estar entre 1 y 5.");
+                return false;
+            }
+
+            // EPS
+            if (eps.length < 3) {
+                alert("Ingrese una EPS válida.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </head>
 
 <body>
@@ -17,25 +112,50 @@
         <span>Sistema de Nómina</span>
     </div>
 
-    <form action="../empleados.php?accion=guardar" method="POST">
+    <form name="formEmpleado" action="../empleados.php?accion=guardar" method="POST" onsubmit="return validarFormulario()">
 
         <label>Código:</label>
-        <input type="text" name="codigo" required>
+        <input type="text" name="codigo" required pattern="[0-9]+" title="Solo números">
 
         <label>Nombre:</label>
-        <input type="text" name="nombre" required>
+        <input type="text" name="nombre" required minlength="3">
 
         <label>Apellido:</label>
-        <input type="text" name="apellido" required>
+        <input type="text" name="apellido" required minlength="3">
 
         <label>Teléfono:</label>
-        <input type="text" name="telefono" required>
+        <input type="text" name="telefono" required pattern="[0-9]{7,}" title="Mínimo 7 números">
 
         <label>Email:</label>
         <input type="email" name="email" required>
 
         <label>Fecha de nacimiento:</label>
         <input type="date" name="fecha_nacimiento" required>
+
+        <!-- NUEVOS CAMPOS -->
+
+        <label>Rol:</label>
+        <select name="cargo" required>
+            <option value="">Seleccione un rol</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Operario">Operario</option>
+            <option value="Gerente">Gerente</option>
+        </select>
+
+        <label>Salario:</label>
+        <input type="number" name="salario" required min="1750905">
+
+        <label>Días laborados:</label>
+        <input type="number" name="dias" required min="1" max="30">
+
+        <label>Días nocturnos:</label>
+        <input type="number" name="nocturnos" required min="0">
+
+        <label>Nivel ARL:</label>
+        <input type="number" name="nivel_arl" required min="1" max="5">
+
+        <label>EPS:</label>
+        <input type="text" name="eps" required minlength="3">
 
         <input type="submit" value="Registrar Empleado" class="btn">
 
