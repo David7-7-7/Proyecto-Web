@@ -46,13 +46,13 @@ class NominaCalculator
         }
 
         //Documento: obligatorio, solo dígitos, entre 7 y 12 caracteres
-        $documento = trim($datos['documento'] ?? '');
+        $documento = trim($datos['codigo'] ?? '');
         if (empty($documento)) {
-            $errores['documento'] = 'El documento es obligatorio.';
+            $errores['codigo'] = 'El documento es obligatorio.';
         } elseif (!ctype_digit($documento)) {
-            $errores['documento'] = 'El documento debe contener solo números.';
+            $errores['codigo'] = 'El documento debe contener solo números.';
         } elseif (strlen($documento) < 7 || strlen($documento) > 12) {
-            $errores['documento'] = 'El documento debe tener entre 7 y 12 dígitos.';
+            $errores['codigo'] = 'El documento debe tener entre 7 y 12 dígitos.';
         }
 
         //Cargo: obligatorio, mínimo 2 caracteres
